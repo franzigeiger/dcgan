@@ -155,10 +155,12 @@ class Discriminator_rect(nn.Module):
 def get_discriminator(pretrained=True):
     D = Discriminator(ngpu=1).eval()
     if pretrained:
+        path = os.path.abspath(__file__)
+        dir_path = os.path.dirname(path)
         if torch.cuda.is_available():
-            D.load_state_dict(torch.load('weights/netD_epoch_299.pth'))
+            D.load_state_dict(torch.load(f'{dir_path}/weights/netD_epoch_299.pth'))
         else:
-            D.load_state_dict(torch.load('weights/netD_epoch_299.pth', map_location='cpu'))
+            D.load_state_dict(torch.load(f"{dir_path}/weights/netD_epoch_299.pth", map_location='cpu'))
     return D
 
 if __name__ == '__main__':    
