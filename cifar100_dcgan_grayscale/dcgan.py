@@ -150,7 +150,17 @@ class Discriminator_rect(nn.Module):
             output = self.main(input)
 #         print('D', output.shape)
         return output.view(-1, 1).squeeze(1)
-    
+
+
+def get_discriminator(pretrained=True):
+    D = Discriminator(ngpu=1).eval()
+    if pretrained:
+        if torch.cuda.is_available():
+            D.load_state_dict(torch.load('weights/netD_epoch_299.pth'))
+        else:
+            D.load_state_dict(torch.load('weights/netD_epoch_299.pth', map_location='cpu'))
+    return D
+
 if __name__ == '__main__':    
 
     parser = argparse.ArgumentParser()
@@ -305,12 +315,3 @@ if __name__ == '__main__':
         torch.save(netG.state_dict(), '%s/netG_epoch_%d.pth' % (opt.outf, epoch))
         torch.save(netD.state_dict(), '%s/netD_epoch_%d.pth' % (opt.outf, epoch))
 
-
-def get_discriminator(pretrained=True):
-    D = Discriminator(ngpu=1).eval()
-    if pretrained:
-        if torch.cuda.is_available():
-            D.load_state_dict(torch.load('weights/netD_epoch_199.pth'))
-        else:
-            D.load_state_dict(torch.load('weights/netD_epoch_199.pth', map_location='cpu'))
-    return D
