@@ -306,11 +306,11 @@ if __name__ == '__main__':
         torch.save(netD.state_dict(), '%s/netD_epoch_%d.pth' % (opt.outf, epoch))
 
 
-    def get_discriminator(pretrained=True):
-        D = Discriminator(ngpu=1).eval()
-        if pretrained:
-            if torch.cuda.is_available():
-                D.load_state_dict(torch.load('weights/netD_epoch_199.pth'))
-            else:
-                D.load_state_dict(torch.load('weights/netD_epoch_199.pth', map_location='cpu'))
-        return D
+def get_discriminator(pretrained=True):
+    D = Discriminator(ngpu=1).eval()
+    if pretrained:
+        if torch.cuda.is_available():
+            D.load_state_dict(torch.load('weights/netD_epoch_199.pth'))
+        else:
+            D.load_state_dict(torch.load('weights/netD_epoch_199.pth', map_location='cpu'))
+    return D
