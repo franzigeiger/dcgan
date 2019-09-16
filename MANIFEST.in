@@ -1,3 +1,7 @@
-include weights/*
-include weights_rect/*
+include LICENSE
+include readme.md
+
+include cifar100_dcgan_grayscale/*
+include cifar100_dcgan_grayscale/weights/*
+include cifar100_dcgan_grayscale/weights_rect/*
 
