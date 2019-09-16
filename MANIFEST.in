@@ -1,0 +1,3 @@
+include weights/*
+include weights_rect/*
+
