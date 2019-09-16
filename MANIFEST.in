@@ -1,7 +1,6 @@
 include LICENSE
 include readme.md
 
-include cifar100_dcgan_grayscale/*
-include cifar100_dcgan_grayscale/weights/*
-include cifar100_dcgan_grayscale/weights_rect/*
+include cifar10_dcgan/*
+include cifar10_dcgan/weights/*
 
