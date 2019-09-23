@@ -25,7 +25,7 @@ class RepeatLayer(nn.Module):
         second= np.copy(inputs.detach().numpy())
         new_inputs= second
         for i in range(self.repeats):
-            new_inputs = np.concatenate([new_inputs, second])
+            new_inputs = np.concatenate([new_inputs, second], axis=1)
         return torch.from_numpy(new_inputs)
 
 
