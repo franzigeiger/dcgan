@@ -22,10 +22,11 @@ class RepeatLayer(nn.Module):
         self.repeats = repeats
 
     def forward(self, inputs):
-        second= np.copy(inputs)
+        second= np.copy(inputs.numpy())
+        new_inputs= second
         for i in range(self.repeats):
-            inputs = np.concatenate(inputs, second)
-        return inputs
+            new_inputs = np.concatenate(new_inputs, second)
+        return torch.from_numpy(new_inputs)
 
 
 class Generator(nn.Module):
