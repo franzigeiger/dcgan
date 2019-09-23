@@ -22,7 +22,7 @@ class RepeatLayer(nn.Module):
         self.repeats = repeats
 
     def forward(self, inputs):
-        second= np.copy(inputs.numpy())
+        second= np.copy(inputs.detach().numpy())
         new_inputs= second
         for i in range(self.repeats):
             new_inputs = np.concatenate(new_inputs, second)
