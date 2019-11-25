@@ -18,7 +18,6 @@ install_requires = [
     'numpy',
     'torch',
     'torchvision',
-    'setuptools',
 ]
 
 tests_require = [
